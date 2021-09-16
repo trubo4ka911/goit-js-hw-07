@@ -1,17 +1,18 @@
-(() => {
-	const selector = "ingredients";
-	const ingredientsEl = document.querySelector(`#${selector}`);
-	if (!ingredientsEl) {
-		console.log(`Selector "#${selector}" not find`);
-		return;
-	}
-	const ingredients = ["Картошка", "Грибы", "Чеснок", "Помидоры", "Зелень", "Приправы"];
-	ingredientsEl.append(
-		...ingredients.map(el => {
-			const liRef = document.createElement("li");
-			liRef.textContent = el;
+const ingredients = [
+    'Картошка',    
+	'Грибы',    
+	'Чеснок',    
+	'Помидоры',    
+	'Зелень',    
+	'Приправы',
+];
+const ulList = document.getElementById('ingredients')
 
-			return liRef;
-		}),
-	);
-})();
+const food = [];
+ ingredients.map(el => {
+  const li = document.createElement('li');
+   li.textContent = el;
+   ulList.appendChild(li);
+   return food.push(el)
+});
+document.querySelectorAll('li')
