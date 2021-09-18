@@ -11,22 +11,22 @@ body {
 	padding: 20px;
 	display: flex;
 	align-items: center;
-	background-color: #b6b6b6;
+	background-color: #37ca8dd8;
 }
-.gallery__item {
+.gallery li {
 	list-style: none;
 	transition: transform 250ms ease;
 }
-.gallery__item:not(:last-child) {
+.gallery li:not(:last-child) {
 	margin-right: 20px;
 }
-.gallery__item:hover {
+.gallery li:hover {
 	transform: scale(1.1);
 }
-.gallery__image {
+.gallery img {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 10em;
 }
 .counter {
 	margin-left: auto;
