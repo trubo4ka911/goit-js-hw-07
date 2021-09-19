@@ -1,17 +1,11 @@
-(() => {
-	const selector = "validation-input";
-	const validationInputEl = document.querySelector(`#${selector}`);
-	if (!validationInputEl) {
-		console.log(`Selector "#${selector}" not find`);
-		return;
-	}
-	validationInputEl.addEventListener("input", () => {
-		if (validationInputEl.value.length === Number.parseInt(validationInputEl.dataset.length)) {
-			validationInputEl.classList.add("valid");
-			validationInputEl.classList.remove("invalid");
-		} else {
-			validationInputEl.classList.add("invalid");
-			validationInputEl.classList.remove("valid");
-		}
-	});
-})();
+const validationInput = document.getElementById('validation-input');
+
+validationInput.addEventListener("input", () => {
+    if (validationInput.value.length === Number.parseInt(validationInput.dataset.length)) {
+        validationInput.classList.add("valid");
+        validationInput.classList.remove("invalid");
+    } else {
+        validationInput.classList.add("invalid");
+        validationInput.classList.remove("valid");
+    }
+});
