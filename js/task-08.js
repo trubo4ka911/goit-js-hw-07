@@ -1,14 +1,11 @@
-(() => {
-	const selectorControls = "controls";
-	const selectorBoxes = "boxes";
-	const controlsEl = document.querySelector(`#${selectorControls}`);
-	let boxesEl = document.querySelector(`#${selectorBoxes}`);
-	const buttonRenderEl = controlsEl.querySelector("button[data-action='render']");
-	const buttonDestroyEl = controlsEl.querySelector("button[data-action='destroy']");
-	const inputEl = controlsEl.querySelector("input");
-	const maxValue = Number.parseInt(inputEl.getAttribute("max"));
+const controls = document.getElementById('#controls');
+const boxes = document.getElementById("boxes");
+const buttonRenderEl = document.querySelector("button[data-action='render']");
+const buttonDestroyEl = document.querySelector("button[data-action='destroy']");
+const inputEl = document.querySelector("input");
+const maxValue = Number.parseInt(inputEl.getAttribute("max"));
 	const createBoxes = function (amount) {
-		if (boxesEl.children.length > 0) {
+		if (boxes.children.length > 0) {
 			destroyBoxes();
 		}
 		const tempMainDiv = [];
@@ -23,13 +20,12 @@
 			tempDiv.append(tempP);
 			tempMainDiv.push(tempDiv);
 		}
-		boxesEl.append(...tempMainDiv);
+		boxes.append(...tempMainDiv);
 	};
 	const destroyBoxes = function () {
 		const tempMainDiv = document.createElement("div");
-		tempMainDiv.id = selectorBoxes;
-		boxesEl.replaceWith(tempMainDiv);
-		boxesEl = document.querySelector(`#${selectorBoxes}`);
+		tempMainDiv.id = boxes;
+		boxes.replaceWith(tempMainDiv);
 	};
 
 	buttonRenderEl.addEventListener("click", () => {
@@ -43,4 +39,3 @@
 		createBoxes(Math.abs(Number.parseInt(inputEl.value)));
 	});
 	buttonDestroyEl.addEventListener("click", destroyBoxes);
-})();
