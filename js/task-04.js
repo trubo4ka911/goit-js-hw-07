@@ -1,27 +1,33 @@
-(() => {
-	const selector = "counter";
-	const counterEl = document.querySelector(`#${selector}`);
-	if (!counterEl) {
-		console.log(`Selector "#${selector}" not find`);
-		return;
-	}
-	const buttonIncrementEl = counterEl.querySelector('button[data-action="increment"]');
-	const buttonDecrementEl = counterEl.querySelector('button[data-action="decrement"]');
-	const valueEl = counterEl.querySelector("#value");
-	valueEl.classList.add(`${selector}__value`);
-	let counterValue = Number.parseInt(valueEl.textContent);
-	counterEl.classList.add(`${selector}`);
-	buttonIncrementEl.classList.add(`${selector}__button`, `${selector}__button--increment`);
-	buttonDecrementEl.classList.add(`${selector}__button`, `${selector}__button--decrement`);
+const counterPlaceHolder = document.getElementById("value");
+const btnIncrement = document.querySelector('[data-action="increment"]');
 
-	const increment = () => {
-		counterValue += 1;
-		valueEl.textContent = counterValue;
-	};
-	const decrement = () => {
-		counterValue -= 1;
-		valueEl.textContent = counterValue;
-	};
-	buttonIncrementEl.addEventListener("click", increment);
-	buttonDecrementEl.addEventListener("click", decrement);
-})();
+btnIncrement.classList = ('increment');
+
+const btnDecrement = document.querySelector('[data-action="decrement"]');
+btnDecrement.classList = ('decrement');
+
+let number = 0;
+
+function changeColor(number){
+    let color = "";
+    if(number < 0 ){
+        color = "red";
+    }else if (number > 0 ){
+        color = "green";
+    }else{
+        color="black";
+    }
+    return color;
+}
+
+btnIncrement.addEventListener("click", function(){
+    number++;
+    counterPlaceHolder.innerHTML = number;
+    counterPlaceHolder.style.color = changeColor(number);
+});
+
+btnDecrement.addEventListener("click", function(){
+    number--;
+    counterPlaceHolder.innerHTML = number;
+    counterPlaceHolder.style.color = changeColor(number);
+});
