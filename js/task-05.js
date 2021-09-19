@@ -1,14 +1,6 @@
-(() => {
-	const selectorInput = "name-input";
-	const selectorOutput = "name-output";
-	const nameInputEl = document.querySelector(`#${selectorInput}`);
-	const nameOutputEl = document.querySelector(`#${selectorOutput}`);
-	if (!nameInputEl || !nameOutputEl) {
-		console.log(`Selector "#${selectorInput}" or "#${selectorOutput}" not find`);
-		return;
-	}
+const nameInput = document.getElementById('name-input');
+const nameOutput = document.getElementById('name-output');
 
-	nameInputEl.addEventListener("input", () => {
-		nameOutputEl.textContent = nameInputEl.value === "" ? "незнакомец" : nameInputEl.value;
-	});
-})();
+nameInput.addEventListener("input", () => {
+    nameOutput.textContent = nameInput.value === "" ? "незнакомец" : nameInput.value;
+});
