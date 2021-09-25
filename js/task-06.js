@@ -1,3 +1,5 @@
+'use strict';
+
 const validationInput = document.getElementById('validation-input');
 
 validationInput.addEventListener("input", () => {

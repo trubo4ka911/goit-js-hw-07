@@ -1,10 +1,12 @@
+'use strict';
+
 const navEl = document.querySelector('#categories');
-const NavItemEl = navEl.childElementCount;
-console.log(`В списке ${NavItemEl} категории.`)
+
+console.log(`В списке ${navEl.childElementCount} категории.`)
 
 
 const items = document.querySelectorAll('.item');
-Array.prototype.forEach.call(items, (element) => {
+items.forEach.call(items, (element) => {
     const title = element.querySelector('h2').innerHTML;
     const itemsLength = element.querySelectorAll('li').length;
     console.log(`Категория: ${title}\nКоличество элементов: ${itemsLength}`);

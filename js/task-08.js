@@ -1,20 +1,26 @@
+'use strict';
+
 const controls = document.getElementById('controls');
 const boxes = document.getElementById('boxes');
 const buttonRenderEl = document.querySelector("button[data-action='render']");
 const buttonDestroyEl = document.querySelector("button[data-action='destroy']");
 const inputEl = document.querySelector('input');
 const maxValue = Number.parseInt(inputEl.getAttribute('max'));
-	const createBoxes = function (amount) {
+	
+const createBoxes = function (amount) {
 		if (boxes.children.length > 0) {
 			destroyBoxes();
 		}
 		const tempMainDiv = [];
 		for (let i = 0; i < amount; i += 1) {
 			const tempDiv = document.createElement('div');
+			
+			const red = Math.floor(Math.random() * 256);
+			const green = Math.floor(Math.random() * 256);
+			const blue = Math.floor(Math.random() * 256);
+			
 			tempDiv.style.width = tempDiv.style.height = `${30 + 10 * i}px`;
-			tempDiv.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
-				Math.random() * 255,
-			)},${Math.floor(Math.random() * 255)})`;
+			tempDiv.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
 			const tempP = document.createElement("p");
 			tempP.textContent = i + 1;
 			tempDiv.append(tempP);
@@ -22,6 +28,7 @@ const maxValue = Number.parseInt(inputEl.getAttribute('max'));
 		}
 		boxes.append(...tempMainDiv);
 	};
+	
 	const destroyBoxes = function () {
 		const tempMainDiv = document.createElement('div');
 		tempMainDiv.id = boxes;
@@ -29,12 +36,14 @@ const maxValue = Number.parseInt(inputEl.getAttribute('max'));
 	};
 
 	buttonRenderEl.addEventListener("click", () => {
-		if (Number.parseInt(inputEl.value) > maxValue || Number.parseInt(inputEl.value) < -maxValue) {
+		let obj = Number.parseInt(inputEl.value);
+
+		if (obj > maxValue || obj < -maxValue) {
 			inputEl.value = maxValue;
 			createBoxes(maxValue);
 			return;
 		}
-		inputEl.value = Math.abs(inputEl.value);
-		createBoxes(Math.abs(Number.parseInt(inputEl.value)));
+
+		createBoxes(Math.abs(obj));
 	});
 	buttonDestroyEl.addEventListener("click", destroyBoxes);

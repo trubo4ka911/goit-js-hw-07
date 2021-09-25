@@ -1,3 +1,5 @@
+'use strict';
+
 const selectorFont = document.getElementById('font-size-control');
 	const selectorText = document.getElementById('text');
 	

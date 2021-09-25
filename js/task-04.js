@@ -1,3 +1,5 @@
+'use strict';
+
 const counterPlaceHolder = document.getElementById("value");
 const btnIncrement = document.querySelector('[data-action="increment"]');
 
@@ -10,15 +12,22 @@ let number = 0;
 
 function changeColor(number){
     let color = "";
-    if(number < 0 ){
+    
+    switch (true) {
+        case(number < 0):
         color = "red";
-    }else if (number > 0 ){
+        break;
+    
+        case(number > 0):
         color = "green";
-    }else{
-        color="black";
-    }
+        break;
+    
+        default: 
+        color = "black";
+    } 
     return color;
 }
+
 
 btnIncrement.addEventListener("click", function(){
     number++;
@@ -31,3 +40,17 @@ btnDecrement.addEventListener("click", function(){
     counterPlaceHolder.innerHTML = number;
     counterPlaceHolder.style.color = changeColor(number);
 });
+
+
+
+// function changeColor(number){
+//     let color = "";
+//     if(number < 0 ){
+//         color = "red";
+//     }else if (number > 0 ){
+//         color = "green";
+//     }else{
+//         color="black";
+//     }
+//     return color;
+// }
