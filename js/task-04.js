@@ -28,29 +28,14 @@ function changeColor(number){
     return color;
 }
 
-
 btnIncrement.addEventListener("click", function(){
-    number++;
+    number +=1;
     counterPlaceHolder.innerHTML = number;
     counterPlaceHolder.style.color = changeColor(number);
 });
 
 btnDecrement.addEventListener("click", function(){
-    number--;
+    number -=1;
     counterPlaceHolder.innerHTML = number;
     counterPlaceHolder.style.color = changeColor(number);
 });
-
-
-
-// function changeColor(number){
-//     let color = "";
-//     if(number < 0 ){
-//         color = "red";
-//     }else if (number > 0 ){
-//         color = "green";
-//     }else{
-//         color="black";
-//     }
-//     return color;
-// }

@@ -4,9 +4,8 @@ const navEl = document.querySelector('#categories');
 
 console.log(`В списке ${navEl.childElementCount} категории.`)
 
-
 const items = document.querySelectorAll('.item');
-items.forEach.call(items, (element) => {
+items.forEach(element => {
     const title = element.querySelector('h2').innerHTML;
     const itemsLength = element.querySelectorAll('li').length;
     console.log(`Категория: ${title}\nКоличество элементов: ${itemsLength}`);

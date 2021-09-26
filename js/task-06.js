@@ -3,7 +3,8 @@
 const validationInput = document.getElementById('validation-input');
 
 validationInput.addEventListener("input", () => {
-    if (validationInput.value.length === Number.parseInt(validationInput.dataset.length)) {
+    const validationLength = validationInput.getAttribute('data-length')
+    if (validationInput.value.length === Number(validationLength)) {
         validationInput.classList.add("valid");
         validationInput.classList.remove("invalid");
     } else {

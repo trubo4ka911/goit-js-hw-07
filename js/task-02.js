@@ -8,26 +8,13 @@ const ingredients = [
 	'Зелень',    
 	'Приправы',
 ];
-const ulList = document.getElementById('ingredients')
+const ulList = document.getElementById('ingredients');
+const fragment = document.createDocumentFragment();
 
 for (let element of ingredients) {
     const li = document.createElement('li');
     li.textContent = element;
-    ulList.appendChild(li);
-
-	console.log(li, element)
+    fragment.append(li);
 }
 
-
-
-
-
-// const food = [];
-//  ingredients.map(el => {
-//   const li = document.createElement('li');
-//    li.textContent = el;
-//    ulList.appendChild(li);
-//    return food.push(el)
-// });
-// document.querySelectorAll('li')
-
+ulList.append(fragment);

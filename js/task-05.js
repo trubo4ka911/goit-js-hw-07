@@ -4,6 +4,6 @@ const nameInput = document.getElementById('name-input');
 const nameOutput = document.getElementById('name-output');
 
 nameInput.addEventListener("input", () => {
-    let obj = nameInput.value;
-    nameOutput.textContent = obj === "" ? "незнакомец" : obj;
+    const inputValue = nameInput.value;
+    nameOutput.textContent = inputValue === "" ? "незнакомец" : inputValue;
 });
