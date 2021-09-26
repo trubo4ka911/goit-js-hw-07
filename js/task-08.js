@@ -5,45 +5,47 @@ const boxes = document.getElementById('boxes');
 const buttonRenderEl = document.querySelector("button[data-action='render']");
 const buttonDestroyEl = document.querySelector("button[data-action='destroy']");
 const inputEl = document.querySelector('input');
-const maxValue = Number.parseInt(inputEl.getAttribute('max'));
+const maxValue = Number(inputEl.getAttribute('max'));
+
+function rgbColor() {
+	const red = Math.floor(Math.random() * 256);
+	const green = Math.floor(Math.random() * 256);
+	const blue = Math.floor(Math.random() * 256);
+	const rgb = `rgb(${red} , ${green}, ${blue})`;
+	console.log(rgb);
+	return rgb;
+}
+
+function createBoxes() {
+	const currentValue = Number(inputEl.value);
+	const fragment = document.createDocumentFragment();
+	const initialSize = 30;
+	const hasChild = boxes.hasChildNodes(); 
+	console.log(hasChild);
+
+	if (hasChild) {
+		boxes.innerHTML = "";
+	}
 	
-const createBoxes = function (amount) {
-		if (boxes.children.length > 0) {
-			destroyBoxes();
-		}
-		const tempMainDiv = [];
-		for (let i = 0; i < amount; i += 1) {
-			const tempDiv = document.createElement('div');
-			
-			const red = Math.floor(Math.random() * 256);
-			const green = Math.floor(Math.random() * 256);
-			const blue = Math.floor(Math.random() * 256);
-			
-			tempDiv.style.width = tempDiv.style.height = `${30 + 10 * i}px`;
-			tempDiv.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
-			const tempP = document.createElement("p");
-			tempP.textContent = i + 1;
-			tempDiv.append(tempP);
-			tempMainDiv.push(tempDiv);
-		}
-		boxes.append(...tempMainDiv);
-	};
+	for (let i = 0; i<currentValue; i += 1) {
+		const box = document.createElement('div');	
+		const currentSize = (initialSize+(i*10));  
+		console.log(currentSize);
+		box.style.width = currentSize+"px";
+		box.style.height = currentSize+"px";
+		box.style.background = rgbColor();
+
+		fragment.append(box);
+	}
+	boxes.append(fragment);
+	inputEl.value = "";
 	
-	const destroyBoxes = function () {
-		const tempMainDiv = document.createElement('div');
-		tempMainDiv.id = boxes;
-		boxes.replaceWith(tempMainDiv);
-	};
+	console.log(typeof currentValue)
+}
 
-	buttonRenderEl.addEventListener("click", () => {
-		let obj = Number.parseInt(inputEl.value);
+buttonRenderEl.addEventListener("click", createBoxes);
 
-		if (obj > maxValue || obj < -maxValue) {
-			inputEl.value = maxValue;
-			createBoxes(maxValue);
-			return;
-		}
-
-		createBoxes(Math.abs(obj));
-	});
-	buttonDestroyEl.addEventListener("click", destroyBoxes);
+function destroyBoxes() {
+	boxes.innerHTML = "";
+};
+buttonDestroyEl.addEventListener("click", destroyBoxes)
